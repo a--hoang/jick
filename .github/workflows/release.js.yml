@@ -50,6 +50,7 @@ jobs:
           host: ${{ secrets.HOST }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
+          username:  ${{ secrets.USER }}
           source: "jick-dist/**"
           target: ${{ secrets.TARGET_DIR }}
           rm: True
