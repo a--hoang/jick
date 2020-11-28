@@ -68,4 +68,3 @@ jobs:
           remote: ${{ secrets.PACKAGE_JSON_TARGET_DIR }}
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          rmRemote: true
