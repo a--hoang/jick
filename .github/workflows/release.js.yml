@@ -65,7 +65,7 @@ jobs:
         with:
           local: package.json
           privateKey: ${{ secrets.KEY }}
-          remote: ${{ secrets.TARGET_DIR }}
+          remote: ${{ secrets.PACKAGE_JSON_TARGET_DIR }}
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           rmRemote: true
