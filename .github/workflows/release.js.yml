@@ -41,16 +41,13 @@ jobs:
         with:
           name: jick-dist
           path: jick-dist/
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: jick-dist/
-      - name: Copy dist to server
-        uses: appleboy/scp-action@master
+      - uses: webfactory/ssh-agent@v0.4.1
         with:
-          host: ${{ secrets.HOST }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          username:  ${{ secrets.USER }}
-          source: "jick-dist/**"
-          target: ${{ secrets.TARGET_DIR }}
-          rm: True
+          ssh-private-key: ${{ secrets.KEY }}
+      - name: Copy dist to server
+        shell: bash
+        env:
+          HOST: ${{ secrets.HOST }}
+          USER:  ${{ secrets.USER }}
+          TARGET: ${{ secrets.TARGET_DIR }}
+        run: scp -rp jick-dist/ $USER@$HOST:$TARGET
