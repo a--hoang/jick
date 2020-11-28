@@ -68,3 +68,19 @@ jobs:
           remote: ${{ secrets.PACKAGE_JSON_TARGET_DIR }}
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
+      - name: npm install
+        uses: appleboy/ssh-action@master
+        env:
+          PACKAGE_JSON_TARGET_DIR: ${{ secrets.PACKAGE_JSON_TARGET_DIR }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
+          script: cd $PACKAGE_JSON_TARGET_DIR && npm install
+      - name: Restart systemd
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
+          script: sudo service jick restart
