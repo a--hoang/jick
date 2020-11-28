@@ -41,13 +41,12 @@ jobs:
         with:
           name: jick-dist
           path: jick-dist/
-      - shell: bash
-        env:
-          KEY: ${{ secrets.KEY }}
-        run: echo $KEY > ./temp_key
       - name: Deploy website
-        env:
-          HOST: ${{ secrets.HOST }}
-          USER: ${{ secrets.USER }}
-          TARGET: ${{ secrets.TARGET_DIR }}
-        run: scp -rp jick-dist/ -i ./temp_key $USER@$HOST:$TARGET
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: jick-dist
+          privateKe: ${{ secrets.KEY }}
+          remote: ${{ secrets.TARGET_DIR }}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          rmRemote: true
