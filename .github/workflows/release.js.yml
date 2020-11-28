@@ -46,6 +46,6 @@ jobs:
           host: ${{ secrets.HOST }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          source: "jick-dist"
-          target: "/var/www/jick/dist"
+          source: "jick-dist/**"
+          target: "${{ secrets.TARGET_DIR }}"
           rm: True
