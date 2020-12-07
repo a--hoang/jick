@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "placeholder",
+    "password": "placeholder",
+    "database": "placeholder",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
